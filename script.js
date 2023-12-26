@@ -102,13 +102,6 @@ Symbol.preload = function () {
 };
 
 Symbol.symbols = [
-  "bem",
-  "film",
-  "fuji",
-  "ohm",
-  "pon",
-  "sun",
-  "nine",
   "chokun",
   "mystery"
 ];
@@ -191,22 +184,33 @@ if (this.config.onSpinEnd) {
     this.config.onSpinEnd(symbols);
 }
 };
+
+const rewardCheck = (array) => {
+  if ((array[0][0] === array[1][0] && array[1][0] === array[2][0] && array[0][0] !== array[3][0]) ||
+      (array[1][0] === array[2][0] && array[2][0] === array[3][0] && array[3][0] !== array[0][0])) {
+    return "Candy"
+  }else if (array[0][0] === array[1][0] && array[0][0] === array[2][0] && array[0][0] === array[3][0] && array[0][0] !== "mystery") {
+    return "Pencil"
+  }else if (array[0][0] === "mystery"  && array[1][0] === "mystery"  && array[2][0] === "mystery" && array[3][0] === "mystery") {
+    return "Jackpot"
+  }else {
+    return "Unluck"
+  }
+}
+
 const scriptURL = 'https://script.google.com/macros/s/AKfycbx0T1UGIKaaPt5Vp2uRKb2GLbj3u8j1ziRKAcLxVha00Jxi3qBvOmNBTbGONkWvsM6f/exec';
 const spinsData = [];
 const config = {
     inverted: false,
     onSpinStart: (symbols) => {
-      console.log("onSpinStart");
     },
     onSpinEnd: (symbols) => {
       spinsData.push(symbols)
-      console.log("onSpinEnd");
-      console.log(symbols)
-      const data = symbols
-
+      console.log(rewardCheck(symbols));
+      const data = symbols.append(rewardCheck(symbols))
       const formData = new FormData();
       for (const key in symbols) {
-        formData.append(key, data[key]);
+        formData.append(key, data[key], data[4]);
       }
 
       fetch(scriptURL, { method: 'POST', body: formData })
@@ -218,17 +222,10 @@ const config = {
           }
         })
         .then(jsonResponse => {
-          console.log(jsonResponse); 
+          // console.log(jsonResponse); 
         })
         .catch(error => console.error('Error!', error.message));
           },
         };
   
 const slot = new Slot(document.getElementById("slot"), config);
-
-
-
-
-
-
-
