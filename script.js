@@ -102,6 +102,13 @@ Symbol.preload = function () {
 };
 
 Symbol.symbols = [
+  "bem",
+  "film",
+  "fuji",
+  "ohm",
+  "pon",
+  "sun",
+  "nine",
   "chokun",
   "mystery"
 ];
