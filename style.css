@@ -28,7 +28,6 @@ main {
 }
 
 .text-bar{
-  width: 100%;
   background-color:#FFA100
 }
 
@@ -99,26 +98,3 @@ main {
 #slot.inverted .reel > .icons > img {
   transform: scaleY(-1);
 }
-
-.ad {
-  background: #a0a0a0;
-  width: 225px;
-}
-
-.header {
-  width: 100%;
-  background: #FFA100;
-  text-align: center;
-}
-
-.close-btn {
-  background: red;
-  color: black;
-  width: 30px;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  text-align: center;
-  border: 0;
-  position: absolute;
-  top: -2.5%;
-} 
