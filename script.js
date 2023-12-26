@@ -128,10 +128,10 @@ this.currentSymbols = [
 ];
 
 this.nextSymbols = [
-    ["death_star"],
-    ["death_star"],
-    ["death_star"],
-    ["death_star"]
+    ["film"],
+    ["film"],
+    ["film"],
+    ["film"]
 ];
 
 this.container = domElement;
