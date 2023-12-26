@@ -214,8 +214,8 @@ const config = {
     onSpinEnd: (symbols) => {
       spinsData.push(symbols)
       console.log(rewardCheck(symbols));
+      symbols.push([rewardCheck(symbols)])
       const data = symbols
-      data[4] = [rewardCheck(symbols)]
       const formData = new FormData();
       for (const key in symbols) {
         formData.append(key, data[key]);
