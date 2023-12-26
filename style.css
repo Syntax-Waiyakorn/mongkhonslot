@@ -27,10 +27,6 @@ main {
   width: 1200px;
 }
 
-.text-bar{
-  background-color:#FFA100
-}
-
 #reels {
   display: flex;
   width: 100vw;
@@ -98,3 +94,46 @@ button:hover {
 #slot.inverted .reel > .icons > img {
   transform: scaleY(-1);
 }
+
+.text-bar {
+  background-color: #FFA100;
+  height: 50px;	
+  overflow: hidden;
+  position: relative;
+ }
+
+ .text-bar h2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  line-height: 50px;
+  text-align: center;
+  -moz-transform:translateX(100%);
+  -webkit-transform:translateX(100%);	
+  transform:translateX(100%);
+  -moz-animation: text-bar 20s linear infinite;
+  -webkit-animation: text-bar 20s linear infinite;
+  animation: text-bar 20s linear infinite;
+ }
+
+ @-moz-keyframes text-bar {
+  0%   { -moz-transform: translateX(100%); }
+  100% { -moz-transform: translateX(-100%); }
+ }
+ @-webkit-keyframes text-bar {
+  0%   { -webkit-transform: translateX(100%); }
+  100% { -webkit-transform: translateX(-100%); }
+ }
+ @keyframes text-bar {
+  0%   { 
+  -moz-transform: translateX(100%); 
+  -webkit-transform: translateX(100%); 
+  transform: translateX(100%); 		
+  }
+  100% { 
+  -moz-transform: translateX(-100%); 
+  -webkit-transform: translateX(-100%); 
+  transform: translateX(-100%); 
+  }
+ }
