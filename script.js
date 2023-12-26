@@ -1,4 +1,3 @@
-
 function Reel(reelContainer, idx, initialSymbols) {
     this.reelContainer = reelContainer;
     this.idx = idx;
@@ -92,7 +91,7 @@ function Symbol(name) {
       this.img.onload = function () {
         cache[name] = this;
       };
-      this.img.src = "assets/" + name + ".svg";
+      this.img.src = "assets/image/" + name + ".jpg";
     }
   }
   
@@ -103,14 +102,15 @@ Symbol.preload = function () {
 };
 
 Symbol.symbols = [
-  "at_at",
-  "c3po",
-  "darth_vader",
-  "death_star",
-  "falcon",
-  "r2d2",
-  "stormtrooper",
-  "tie_ln"
+  "bem",
+  "film",
+  "fuji",
+  "ohm",
+  "pon",
+  "sun",
+  "nine",
+  "chokun",
+  "mystery"
 ];
 
 Symbol.random = function () {
@@ -121,10 +121,10 @@ function Slot(domElement, config) {
 Symbol.preload();
 
 this.currentSymbols = [
-    ["death_star"],
-    ["death_star"],
-    ["death_star"],
-    ["death_star"]
+    ["film"],
+    ["film"],
+    ["film"],
+    ["film"]
 ];
 
 this.nextSymbols = [
@@ -190,11 +190,9 @@ this.spinButton.disabled = false;
 if (this.config.onSpinEnd) {
     this.config.onSpinEnd(symbols);
 }
-
 };
   
 const spinsData = [];
-
 const config = {
     inverted: false,
     onSpinStart: (symbols) => {
@@ -230,6 +228,8 @@ function saveToCSV() {
 
   console.log('spinsData saved to spinsData.csv');
 }
+
+  
 
 
 
