@@ -207,10 +207,11 @@ const config = {
     onSpinEnd: (symbols) => {
       spinsData.push(symbols)
       console.log(rewardCheck(symbols));
-      const data = symbols.append(rewardCheck(symbols))
+      const data = symbols
+      data[4] = [rewardCheck(symbols)]
       const formData = new FormData();
       for (const key in symbols) {
-        formData.append(key, data[key], data[4]);
+        formData.append(key, data[key]);
       }
 
       fetch(scriptURL, { method: 'POST', body: formData })
