@@ -201,6 +201,7 @@ const config = {
     onSpinEnd: (symbols) => {
       spinsData.push(symbols)
       console.log("onSpinEnd");
+      console.log(symbols)
       const data = symbols
 
       const formData = new FormData();

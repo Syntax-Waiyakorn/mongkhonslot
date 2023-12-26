@@ -101,8 +101,9 @@ main {
 }
 
 .ad {
-  background: #a0a0a0;
+  background: black;
   width: 225px;
+  animation: .5s ease ad-border-animation infinite;
 }
 
 .header {
@@ -144,6 +145,44 @@ main {
   -webkit-animation: text-bar 20s linear infinite;
   animation: text-bar 20s linear infinite;
  }
+
+.text {
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  color: white;
+}
+
+#syntax-logo {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  animation: .5s step-end syntax-animation infinite
+}
+
+@keyframes syntax-animation {
+  0% {
+    bottom: 0;
+  }
+  50% {
+    bottom: 2.5%;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes ad-border-animation {
+  0% {
+    border: 0;
+  }
+  50% {
+    border: 5px solid red;
+  }
+  100% {
+    border: 0;
+  }
+}
 
  @-moz-keyframes text-bar {
   0%   { -moz-transform: translateX(100%); }
