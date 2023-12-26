@@ -191,7 +191,7 @@ if (this.config.onSpinEnd) {
     this.config.onSpinEnd(symbols);
 }
 };
-  
+const scriptURL = 'https://script.google.com/macros/s/AKfycbx0T1UGIKaaPt5Vp2uRKb2GLbj3u8j1ziRKAcLxVha00Jxi3qBvOmNBTbGONkWvsM6f/exec';
 const spinsData = [];
 const config = {
     inverted: false,
@@ -201,35 +201,33 @@ const config = {
     onSpinEnd: (symbols) => {
       spinsData.push(symbols)
       console.log("onSpinEnd");
-      console.log(spinsData);
-    },
-  };
+      const data = symbols
+
+      const formData = new FormData();
+      for (const key in symbols) {
+        formData.append(key, data[key]);
+      }
+
+      fetch(scriptURL, { method: 'POST', body: formData })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('Network response was not ok.');
+          }
+        })
+        .then(jsonResponse => {
+          console.log(jsonResponse); 
+        })
+        .catch(error => console.error('Error!', error.message));
+          },
+        };
   
 const slot = new Slot(document.getElementById("slot"), config);
 
-function convertToCSV() {
-  const csvContent = spinsData.map(row => row.join(',')).join('\n');
-  return csvContent;
-}
 
-function saveToCSV() {
-  const csvContent = convertToCSV();
 
-  const blob = new Blob([csvContent], { type: 'text/csv' });
 
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'spinsData.csv';
-
-  document.body.appendChild(link);
-  link.click();
-
-  document.body.removeChild(link);
-
-  console.log('spinsData saved to spinsData.csv');
-}
-
-  
 
 
 
